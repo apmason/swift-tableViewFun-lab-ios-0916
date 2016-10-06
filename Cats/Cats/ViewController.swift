@@ -10,8 +10,25 @@ import UIKit
 
 class ViewController: UITableViewController {
     
+    let catArray: [String] = ["Abyssinian", "American Shorthair", "Bengal", "Birman", "British Shorthair",
+                              "Burmese", "Exotic Shorthair", "Maine Coon", "Norwegian Forest", "Persian",
+                              "Ragdoll", "Scottish Fold", "Tabby"]
     
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return catArray.count
+    }
    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "KittyCell", for: indexPath)
+        let cat = catArray[indexPath.row]
+        cell.textLabel?.text = cat
+        return cell
+    }
     
     
 }
